@@ -1,4 +1,4 @@
-"""CLI entry point for cane-perf."""
+"""CLI entry point for sparse-gpu-perf."""
 
 import argparse
 import asyncio
@@ -87,9 +87,9 @@ def _print_efficiency(console, result):
 
 def cmd_bench(args):
     """Run a single benchmark."""
-    from cane_gpu_perf.config import BenchmarkConfig
-    from cane_gpu_perf.bench.runner import BenchmarkRunner
-    from cane_gpu_perf.diagnose.engine import DiagnoseEngine, format_findings
+    from sparse_gpu_perf.config import BenchmarkConfig
+    from sparse_gpu_perf.bench.runner import BenchmarkRunner
+    from sparse_gpu_perf.diagnose.engine import DiagnoseEngine, format_findings
     from rich.console import Console
 
     console = Console()
@@ -137,11 +137,11 @@ def cmd_bench(args):
 
 def cmd_analyze(args):
     """Run a workload scenario and produce findings."""
-    from cane_gpu_perf.scenarios.runner import ScenarioRunner
-    from cane_gpu_perf.scenarios.chatbot import chatbot_scenario
-    from cane_gpu_perf.scenarios.rag_pipeline import rag_pipeline_scenario
-    from cane_gpu_perf.scenarios.batch_processing import batch_processing_scenario
-    from cane_gpu_perf.scenarios.code_generation import code_generation_scenario
+    from sparse_gpu_perf.scenarios.runner import ScenarioRunner
+    from sparse_gpu_perf.scenarios.chatbot import chatbot_scenario
+    from sparse_gpu_perf.scenarios.rag_pipeline import rag_pipeline_scenario
+    from sparse_gpu_perf.scenarios.batch_processing import batch_processing_scenario
+    from sparse_gpu_perf.scenarios.code_generation import code_generation_scenario
 
     SCENARIOS = {
         "chatbot": chatbot_scenario,
@@ -182,7 +182,7 @@ def cmd_analyze(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="cane-perf",
+        prog="sparse-gpu-perf",
         description="GPU inference benchmarking with opinionated diagnostics",
     )
     subparsers = parser.add_subparsers(dest="command", help="Available commands")

@@ -8,8 +8,8 @@ import httpx
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeElapsedColumn
 
-from cane_gpu_perf.config import BenchmarkConfig, BenchmarkResult
-from cane_gpu_perf.utils.tokens import count_tokens
+from sparse_gpu_perf.config import BenchmarkConfig, BenchmarkResult
+from sparse_gpu_perf.utils.tokens import count_tokens
 
 console = Console()
 
@@ -111,7 +111,7 @@ class BenchmarkRunner:
         # Start GPU telemetry if deep mode
         gpu_collector = None
         if config.deep:
-            from cane_gpu_perf.gpu.collector import GpuCollector
+            from sparse_gpu_perf.gpu.collector import GpuCollector
             gpu_collector = GpuCollector(interval_ms=100)
             started = gpu_collector.start()
             if not started:

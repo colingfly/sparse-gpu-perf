@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from cane_gpu_perf.config import BenchmarkResult
+from sparse_gpu_perf.config import BenchmarkResult
 
 
 @dataclass
@@ -350,7 +350,7 @@ class DiagnoseEngine:
         if not result.gpu_telemetry or not result.gpu_info:
             return findings
 
-        from cane_gpu_perf.gpu.roofline import analyze_roofline
+        from sparse_gpu_perf.gpu.roofline import analyze_roofline
 
         gpu_name = result.gpu_info.get("name", "")
         prompt_tokens_mean = 0.0
@@ -484,7 +484,7 @@ class DiagnoseEngine:
         if not result.gpu_telemetry:
             return findings
 
-        from cane_gpu_perf.gpu.efficiency import analyze_efficiency
+        from sparse_gpu_perf.gpu.efficiency import analyze_efficiency
 
         ts = result.gpu_telemetry[0]
         total_tokens = sum(r.get("output_tokens", 0) for r in result.individual_results
@@ -559,7 +559,7 @@ class DiagnoseEngine:
         if not result.gpu_telemetry or len(result.gpu_telemetry) < 2:
             return findings
 
-        from cane_gpu_perf.gpu.topology import analyze_gpu_balance
+        from sparse_gpu_perf.gpu.topology import analyze_gpu_balance
 
         report = analyze_gpu_balance(result.gpu_telemetry)
         if report is None:

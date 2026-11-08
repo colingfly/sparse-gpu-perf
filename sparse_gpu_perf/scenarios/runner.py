@@ -2,10 +2,10 @@ import asyncio
 from rich.console import Console
 from rich.panel import Panel
 
-from cane_gpu_perf.scenarios.base import Scenario
-from cane_gpu_perf.bench.runner import BenchmarkRunner
-from cane_gpu_perf.diagnose.engine import DiagnoseEngine, Finding, format_findings
-from cane_gpu_perf.config import BenchmarkResult
+from sparse_gpu_perf.scenarios.base import Scenario
+from sparse_gpu_perf.bench.runner import BenchmarkRunner
+from sparse_gpu_perf.diagnose.engine import DiagnoseEngine, Finding, format_findings
+from sparse_gpu_perf.config import BenchmarkResult
 
 console = Console()
 

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from cane_gpu_perf.config import BenchmarkConfig
+from sparse_gpu_perf.config import BenchmarkConfig
 
 
 @dataclass

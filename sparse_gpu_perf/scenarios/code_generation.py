@@ -5,8 +5,8 @@ Simulates a coding assistant workload.
 - Measures quality consistency alongside performance
 """
 
-from cane_gpu_perf.scenarios.base import Scenario
-from cane_gpu_perf.config import BenchmarkConfig
+from sparse_gpu_perf.scenarios.base import Scenario
+from sparse_gpu_perf.config import BenchmarkConfig
 
 
 def code_generation_scenario(model: str, backend: str) -> Scenario:

@@ -1,30 +1,30 @@
-# cane-gpu-perf
+# sparse-gpu-perf
 
 GPU inference benchmarking with opinionated diagnostics and deep hardware analysis.
 
 ## Install
 
 ```bash
-pip install cane-gpu-perf
+pip install sparse-gpu-perf
 ```
 
 ## Quick Start
 
 ```bash
 # Single benchmark
-cane-perf bench --model arcee-ai/trinity-large-thinking --backend openrouter --concurrency 8 --diagnose
+sparse-gpu-perf bench --model arcee-ai/trinity-large-thinking --backend openrouter --concurrency 8 --diagnose
 
 # Deep GPU analysis (NVML telemetry, roofline model, power/thermal, prefill/decode)
-cane-perf bench --model meta-llama/Llama-3-7b --backend vllm --concurrency 8 --deep
+sparse-gpu-perf bench --model meta-llama/Llama-3-7b --backend vllm --concurrency 8 --deep
 
 # With custom endpoint
-cane-perf bench --model my-model --backend vllm --base-url http://localhost:8000/v1/chat/completions
+sparse-gpu-perf bench --model my-model --backend vllm --base-url http://localhost:8000/v1/chat/completions
 ```
 
 ## Deep GPU Analysis
 
 The `--deep` flag enables hardware-level GPU profiling on top of standard HTTP-layer metrics.
-Requires an NVIDIA GPU and `pip install cane-gpu-perf[gpu]`.
+Requires an NVIDIA GPU and `pip install sparse-gpu-perf[gpu]`.
 
 What it adds:
 
@@ -40,7 +40,7 @@ What it adds:
   straggler detection.
 
 ```bash
-cane-perf bench --model meta-llama/Llama-3-7b --backend vllm --deep
+sparse-gpu-perf bench --model meta-llama/Llama-3-7b --backend vllm --deep
 ```
 
 Output:
@@ -90,10 +90,10 @@ INFO: Energy: 0.50 tok/W, 0.0014 tok/J
 Run realistic workload scenarios and get actionable findings:
 
 ```bash
-cane-perf analyze --model arcee-ai/trinity-large-thinking --backend vllm --scenario chatbot
+sparse-gpu-perf analyze --model arcee-ai/trinity-large-thinking --backend vllm --scenario chatbot
 
 # With deep GPU analysis across all scenario phases
-cane-perf analyze --model meta-llama/Llama-3-7b --backend vllm --scenario chatbot --deep
+sparse-gpu-perf analyze --model meta-llama/Llama-3-7b --backend vllm --scenario chatbot --deep
 ```
 
 Output:
@@ -156,7 +156,7 @@ Deep diagnostics (with `--deep`):
 ## Architecture
 
 ```
-cane_gpu_perf/
+sparse_gpu_perf/
   config.py            # BenchmarkConfig, BenchmarkResult dataclasses
   utils/tokens.py      # tiktoken-based token counting
   bench/runner.py      # Benchmark runner (streaming HTTP, metrics, GPU collector)
